@@ -24,6 +24,10 @@ namespace Cake.LicenseHeaderUpdater
 
         public CakeLicenseHeaderUpdaterRunner( ICakeContext context )
         {
+            if( context == null )
+            {
+                throw new ArgumentNullException( nameof( context ) );
+            }
             this.context = context;
         }
 
@@ -31,6 +35,16 @@ namespace Cake.LicenseHeaderUpdater
 
         public void Run( IEnumerable<FilePath> files, CakeLicenseHeaderUpdaterSettings settings )
         {
+            if( files == null )
+            {
+                throw new ArgumentNullException( nameof( files ) );
+            }
+
+            if( settings == null )
+            {
+                throw new ArgumentNullException( nameof( settings ) );
+            }
+
             settings = FixupSettings( settings );
 
             ConcurrentQueue<FilePath> filesToProcess = new ConcurrentQueue<FilePath>( files );

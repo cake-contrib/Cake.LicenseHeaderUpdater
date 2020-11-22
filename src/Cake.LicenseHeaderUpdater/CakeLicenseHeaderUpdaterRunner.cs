@@ -14,7 +14,7 @@ using Cake.Core.IO;
 
 namespace Cake.LicenseHeaderUpdater
 {
-    public class CakeLicenseHeaderUpdaterRunner
+    internal class CakeLicenseHeaderUpdaterRunner
     {
         // ---------------- Fields ----------------
 
@@ -80,7 +80,7 @@ namespace Cake.LicenseHeaderUpdater
             }
         }
 
-        private static CakeLicenseHeaderUpdaterSettings FixupSettings( CakeLicenseHeaderUpdaterSettings settings )
+        internal static CakeLicenseHeaderUpdaterSettings FixupSettings( CakeLicenseHeaderUpdaterSettings settings )
         {
             CakeLicenseHeaderUpdaterSettings realSettings = new CakeLicenseHeaderUpdaterSettings();
             realSettings.DryRun = settings.DryRun;

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.LicenseHeaderUpdater", "Cake.LicenseHeaderUpdater\Cake.LicenseHeaderUpdater.csproj", "{735BD109-7DA0-442B-A67E-D2BC47D4ECF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{735BD109-7DA0-442B-A67E-D2BC47D4ECF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735BD109-7DA0-442B-A67E-D2BC47D4ECF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735BD109-7DA0-442B-A67E-D2BC47D4ECF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735BD109-7DA0-442B-A67E-D2BC47D4ECF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6AF52A6E-882C-445E-B374-A88517140A67}
+	EndGlobalSection
+EndGlobal

@@ -9,11 +9,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Cake.Core;
+using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 
 namespace Cake.LicenseHeaderUpdater
 {
-    internal class CakeLicenseHeaderUpdaterRunner
+    public class CakeLicenseHeaderUpdaterRunner
     {
         // ---------------- Fields ----------------
 
@@ -36,35 +37,38 @@ namespace Cake.LicenseHeaderUpdater
             List<FileProcessorRunner> runners = new List<FileProcessorRunner>( settings.Threads );
             List<FileProcessorRunnerResult> results = new List<FileProcessorRunnerResult>( settings.Threads );
 
-            for( int i = 1; i <= settings.Threads; ++i )
+            using( this.context.Log.WithVerbosity( settings.Verbosity ) )
             {
-                FileProcessorRunner runner = new FileProcessorRunner( i, this.context.Log, filesToProcess, settings );
-                runners.Add( runner );
-            }
-
-            try
-            {
-                foreach( FileProcessorRunner runner in runners )
+                for( int i = 1; i <= settings.Threads; ++i )
                 {
-                    runner.Start();
+                    FileProcessorRunner runner = new FileProcessorRunner( i, this.context.Log, filesToProcess, settings );
+                    runners.Add( runner );
                 }
 
-                foreach( FileProcessorRunner runner in runners )
+                try
                 {
-                    results.Add( runner.Wait() );
-                }
-
-            }
-            finally
-            {
-                foreach( FileProcessorRunner runner in runners )
-                {
-                    try
+                    foreach( FileProcessorRunner runner in runners )
                     {
-                        runner.Dispose();
+                        runner.Start();
                     }
-                    catch( Exception )
+
+                    foreach( FileProcessorRunner runner in runners )
                     {
+                        results.Add( runner.Wait() );
+                    }
+
+                }
+                finally
+                {
+                    foreach( FileProcessorRunner runner in runners )
+                    {
+                        try
+                        {
+                            runner.Dispose();
+                        }
+                        catch( Exception )
+                        {
+                        }
                     }
                 }
             }

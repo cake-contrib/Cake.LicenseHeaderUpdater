@@ -130,17 +130,28 @@ namespace Cake.LicenseHeaderUpdater
                     {
                         Verbosity startVerbosity = this.settings.DryRun ? Verbosity.Quiet : Verbosity.Minimal;
 
-                        this.log.Information(
-                            startVerbosity,
-                            $"{threadNumber}> Processing {currentFile}..."
-                        );
+                        if( settings.FileFilter( currentFile ) )
+                        {
 
-                        this.processor.ProcessFile( currentFile );
+                            this.log.Information(
+                                startVerbosity,
+                                $"{threadNumber}> Processing '{currentFile}'..."
+                            );
 
-                        this.log.Information(
-                            Verbosity.Diagnostic,
-                            $"{threadNumber}> Processing {currentFile}... Done!"
-                        );
+                            this.processor.ProcessFile( currentFile );
+
+                            this.log.Information(
+                                Verbosity.Diagnostic,
+                                $"{threadNumber}> Processing '{currentFile}'... Done!"
+                            );
+                        }
+                        else
+                        {
+                            this.log.Information(
+                                Verbosity.Verbose,
+                                $"{threadNumber}> Skipping '{currentFile}'."
+                            );
+                        }
                     }
                     else
                     {

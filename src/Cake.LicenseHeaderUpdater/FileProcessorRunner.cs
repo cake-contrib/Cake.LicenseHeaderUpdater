@@ -170,7 +170,7 @@ namespace Cake.LicenseHeaderUpdater
                 {
                     this.log.Error(
                         Verbosity.Minimal,
-                        $"{threadNumber}> Error when processing {currentFile ?? "[null]"}: {e.Message}."
+                        $"{threadNumber}> Error when processing {currentFile ?? "[null]"}: {e.Message}"
                     );
 
                     if( currentFile != null )

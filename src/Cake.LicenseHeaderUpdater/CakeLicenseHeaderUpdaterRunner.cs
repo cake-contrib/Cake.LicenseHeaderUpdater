@@ -80,7 +80,7 @@ namespace Cake.LicenseHeaderUpdater
             }
         }
 
-        private CakeLicenseHeaderUpdaterSettings FixupSettings( CakeLicenseHeaderUpdaterSettings settings )
+        private static CakeLicenseHeaderUpdaterSettings FixupSettings( CakeLicenseHeaderUpdaterSettings settings )
         {
             CakeLicenseHeaderUpdaterSettings realSettings = new CakeLicenseHeaderUpdaterSettings();
             realSettings.DryRun = settings.DryRun;
@@ -97,6 +97,10 @@ namespace Cake.LicenseHeaderUpdater
             if( string.IsNullOrEmpty( settings.LicenseString ) )
             {
                 realSettings.LicenseString = null;
+            }
+            else
+            {
+                realSettings.LicenseString = settings.LicenseString;
             }
 
             IEnumerable<string> fixedRegexes = settings.OldHeaderRegexPatterns.Where(

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cake.Frosting" Version="0.38.5" />
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
@@ -14,6 +15,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cake.LicenseHeaderUpdater\Cake.LicenseHeaderUpdater.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegrationTests\" />
+    <Folder Include="UnitTests\" />
+    <Folder Include="TestCore\" />
   </ItemGroup>
 
 </Project>

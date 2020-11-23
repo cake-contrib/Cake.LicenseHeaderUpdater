@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.LicenseHeaderUpdater", "Cake.LicenseHeaderUpdater\Cake.LicenseHeaderUpdater.csproj", "{735BD109-7DA0-442B-A67E-D2BC47D4ECF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.LicenseHeaderUpdater.Tests", "Cake.LicenseHeaderUpdater.Tests\Cake.LicenseHeaderUpdater.Tests.csproj", "{022550AE-53BF-49A0-826D-AB4DFF654C62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.LicenseHeaderUpdater.Tests", "Cake.LicenseHeaderUpdater.Tests\Cake.LicenseHeaderUpdater.Tests.csproj", "{022550AE-53BF-49A0-826D-AB4DFF654C62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

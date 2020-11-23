@@ -35,7 +35,7 @@ namespace Cake.LicenseHeaderUpdater
         /// the files.
         /// 
         /// If this configuration is null or empty,
-        /// then all matches in <see cref="OldLicenseRegexes"/> will be purged,
+        /// then all matches in <see cref="OldHeaderRegexPatterns"/> will be purged,
         /// but nothing will be added to the top of the file.
         /// </summary>
         public string LicenseString { get; set; }

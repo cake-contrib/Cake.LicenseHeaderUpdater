@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"
+>
+  <metadata>
+    <dependencies>
+      <group targetFramework="netstandard2.0"/>
+    </dependencies>
+    <id>Cake.LicenseHeaderUpdater</id>
+    <version>0.0.0</version> <!-- Set during build. -->
+    <authors>Seth Hendrick</authors>
+    <description>Cake addin to update the license header of source code files.</description>
+    <summary>This allows one to mass-update the license header in their source code files via Cake.</summary>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/xforever1313/Cake.LicenseHeaderUpdater</projectUrl>
+    <icon>icon.png</icon>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <repository type="git" url="https://github.com/xforever1313/Cake.LicenseHeaderUpdater.git"/>
+    <copyright>Copyright (c) Seth Hendrick</copyright>
+    <tags>xforever1313 cake build addin dotnet C# license header updater</tags>
+  </metadata>
+  <files>
+  </files>
+</package>

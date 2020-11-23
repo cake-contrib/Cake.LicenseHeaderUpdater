@@ -3,7 +3,7 @@
 #tool "nuget:?package=ReportGenerator"
 
 const string buildTarget = "build";
-const string unitTestTarget = "unit_test";
+const string testTarget = "run_test";
 const string buildReleaseTarget = "build_release";
 const string nugetPackTarget = "nuget_pack";
 const string makeDistTarget = "make_dist";
@@ -44,7 +44,7 @@ Task( buildTarget )
     }
 ).Description( $"Builds the Debug target of {projectName}" );
 
-Task( unitTestTarget )
+Task( testTarget )
 .Does(
     ( context ) =>
     {
@@ -63,19 +63,19 @@ Task( unitTestTarget )
 
             FilePath output = coverageFolder.CombineWithFilePath( "coverage.xml" );
 
-            OpenCover( c => RunUnitTests( c ), output, settings );
+            OpenCover( c => RunTests( c ), output, settings );
 
             ReportGenerator( output, coverageFolder );
         }
         else
         {
-            RunUnitTests( context );
+            RunTests( context );
         }
     }
-).Description( "Runs all Unit Tests" )
+).Description( "Runs all Tests" )
 .IsDependentOn( buildTarget );
 
-private void RunUnitTests( ICakeContext context )
+private void RunTests( ICakeContext context )
 {
     DotNetCoreTestSettings settings = new DotNetCoreTestSettings
     {
@@ -84,7 +84,7 @@ private void RunUnitTests( ICakeContext context )
         Configuration = "Debug"
     };
 
-    context.DotNetCoreTest( $"./src/{projectName}.UnitTests/{projectName}.UnitTests.csproj", settings );
+    context.DotNetCoreTest( $"./src/{projectName}.Tests/{projectName}.Tests.csproj", settings );
 }
 
 Task( buildReleaseTarget )
@@ -99,7 +99,7 @@ Task( buildReleaseTarget )
         DotNetCoreBuild( sln.ToString(), settings );
     }
 ).Description( "Builds with the Release Configuration." )
-.IsDependentOn( unitTestTarget );
+.IsDependentOn( testTarget );
 
 Task( makeDistTarget )
 .Does(

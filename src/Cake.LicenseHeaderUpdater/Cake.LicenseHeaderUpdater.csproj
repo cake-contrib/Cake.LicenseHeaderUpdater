@@ -12,7 +12,7 @@
 
     <ItemGroup>
         <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <_Parameter1>Cake.LicenseHeaderUpdater.UnitTests</_Parameter1>
+            <_Parameter1>Cake.LicenseHeaderUpdater.Tests</_Parameter1>
         </AssemblyAttribute>
     </ItemGroup>
 

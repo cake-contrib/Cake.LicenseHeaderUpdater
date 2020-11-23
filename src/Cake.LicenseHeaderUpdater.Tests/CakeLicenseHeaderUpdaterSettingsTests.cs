@@ -10,7 +10,7 @@ using Cake.Core.Diagnostics;
 using Cake.Core.IO;
 using NUnit.Framework;
 
-namespace Cake.LicenseHeaderUpdater.UnitTests
+namespace Cake.LicenseHeaderUpdater.Tests
 {
     [TestFixture]
     public class CakeLicenseHeaderUpdaterSettingsTests

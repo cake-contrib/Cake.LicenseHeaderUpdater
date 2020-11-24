@@ -121,7 +121,7 @@ namespace Cake.LicenseHeaderUpdater
                         keepGoing = false;
                         this.log.Information(
                             Verbosity.Diagnostic,
-                            $"{threadNumber}> Done procesing"
+                            $"{threadNumber}> Done processing"
                         );
                         continue;
                     }
@@ -135,14 +135,14 @@ namespace Cake.LicenseHeaderUpdater
 
                             this.log.Information(
                                 startVerbosity,
-                                $"{threadNumber}> Processing '{currentFile}'..."
+                                $"{threadNumber}> Begin Processing '{currentFile}'..."
                             );
 
                             this.processor.ProcessFile( currentFile );
 
                             this.log.Information(
                                 Verbosity.Diagnostic,
-                                $"{threadNumber}> Processing '{currentFile}'... Done!"
+                                $"{threadNumber}> Finished Processing '{currentFile}'."
                             );
                         }
                         else

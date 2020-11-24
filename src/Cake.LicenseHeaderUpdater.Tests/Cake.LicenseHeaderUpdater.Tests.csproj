@@ -18,9 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IntegrationTests\" />
     <Folder Include="UnitTests\" />
-    <Folder Include="TestCore\" />
   </ItemGroup>
 
 </Project>

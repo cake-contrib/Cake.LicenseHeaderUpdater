@@ -60,6 +60,9 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
                 var oldCout = Console.Out;
                 try
                 {
+                    // Each time we write to stdout, capture it for processing later.
+                    // We'll put it back in the finally block.
+
                     Console.SetOut( writer );
                     var host = new CakeHostBuilder()
                         .WithArguments( arguments.ToArray() )

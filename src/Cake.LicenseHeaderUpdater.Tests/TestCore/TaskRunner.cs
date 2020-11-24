@@ -13,6 +13,9 @@ using Cake.Frosting;
 
 namespace Cake.LicenseHeaderUpdater.Tests.TestCore
 {
+    /// <summary>
+    /// Executes the license header updater inside of the cake environment.
+    /// </summary>
     [TaskName( TaskName )]
     public class TaskRunner : FrostingTask
     {

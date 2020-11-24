@@ -13,6 +13,15 @@ using NUnit.Framework;
 
 namespace Cake.LicenseHeaderUpdater.Tests.TestCore
 {
+    /// <summary>
+    /// Runs the cake environment.  This is so we don't have to build
+    /// an entire mock cake environment, and we don't need to download cake.exe.  Just
+    /// use Cake.Frosting instead.
+    /// 
+    /// ...Yeahhhh, its a tad hacky.  But the alternative is downloading cake and maintaining a bunch
+    /// of cake files OR making a mock instance of ICakeContext, and I don't really
+    /// want to do either of those.
+    /// </summary>
     public static class TaskMain
     {
         public static string RunTask( string globString, CakeLicenseHeaderUpdaterSettings settings )

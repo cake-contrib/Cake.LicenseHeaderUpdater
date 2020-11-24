@@ -42,7 +42,9 @@ Does(
 // Copyright Seth Hendrick 2019-2020.
 // Distributed under the MIT License.
 // (See accompanying file LICENSE in the root of the repository).
-//";    // <- No new line at the end, one is added automatically.
+//
+
+";    // <- So there is a new line between the license and the start of the rest of the file
 
         FilePathCollection files = GetFiles( "src/*.cs" );
         UpdateLicenseHeaders( files, settings );
@@ -75,7 +77,9 @@ Does(
 // Copyright Seth Hendrick 2019-2020.
 // Distributed under the MIT License.
 // (See accompanying file LICENSE in the root of the repository).
-//";    // <- No new line at the end, one is added automatically.
+//
+
+";    // <- So there is a new line between the license and the start of the rest of the file
 
         // Remember, this is a regex, you need to escape characters such as '.'.
         string old2019Regex = 

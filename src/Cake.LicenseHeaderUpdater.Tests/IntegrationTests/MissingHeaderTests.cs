@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
 {
     [TestFixture]
-    public class DryRunTests
+    public class MissingHeaderTests
     {
         // ---------------- Fields ----------------
 
@@ -34,9 +34,9 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
         // ---------------- Tests ----------------
 
         [Test]
-        public void DryRunTrueTest()
+        public void MissingHeaderWithNewLicenseSpecifiedTest()
         {
-            const string expectedFile =
+            const string originalFile =
 @"using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,20 +48,22 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
     }
 }
 ";
+
+            string expectedFile =
+                TestConstants.MultilineLicenseString +
+                originalFile;
+
             CakeLicenseHeaderUpdaterSettings settings = new CakeLicenseHeaderUpdaterSettings
             {
-                DryRun = true,
-                LicenseString = "My License"
+                LicenseString = TestConstants.MultilineLicenseString
             };
 
-            // This should erase everything if dry run doesn't work.
-            settings.OldHeaderRegexPatterns.Add( ".*" );
+            // Nothing should happen, even if specified.  There are no old licenses hanging around.
+            settings.OldHeaderRegexPatterns.Add( TestConstants.RegexEscapedMultilineLicenseString );
 
 
-            // Should be a successful run with the intent of the output to 
-            // change everything, but nothing should actually change.
-            ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( expectedFile, expectedFile, settings );
-            result.WasSuccess( true, true );
+            ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
+            result.WasSuccess( true, false );
         }
     }
 }

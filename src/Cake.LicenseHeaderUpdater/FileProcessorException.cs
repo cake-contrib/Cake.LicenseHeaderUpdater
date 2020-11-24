@@ -16,7 +16,7 @@ namespace Cake.LicenseHeaderUpdater
     {
         // ---------------- Constructor ----------------
 
-        public FileProcessorException( FilePath file, Exception e ) :
+        internal FileProcessorException( FilePath file, Exception e ) :
             base(
                 $"Exception thrown when processing file {file}: {e.Message}",
                 e

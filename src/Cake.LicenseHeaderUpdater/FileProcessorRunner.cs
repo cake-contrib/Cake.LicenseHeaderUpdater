@@ -94,11 +94,13 @@ namespace Cake.LicenseHeaderUpdater
             {
                 if( fromDispose )
                 {
+                    this.thread?.Interrupt();
                     this.thread?.Join();
                 }
                 else
                 {
                     this.thread?.Abort();
+                    // Don't block GC thread.
                 }
             }
             finally

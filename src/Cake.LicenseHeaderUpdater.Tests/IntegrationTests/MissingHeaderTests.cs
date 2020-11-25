@@ -4,6 +4,7 @@
 // (See accompanying file LICENSE in the root of the repository).
 //
 
+using System.Text.RegularExpressions;
 using Cake.LicenseHeaderUpdater.Tests.TestCore;
 using NUnit.Framework;
 
@@ -49,17 +50,42 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
 }
 ";
 
+            const string licenseString =
+@"//
+// Copyright Seth Hendrick 2020.
+// Distributed under the MIT License.
+// (See accompanying file LICENSE in the root of the repository).
+//
+
+";
+
             string expectedFile =
-                TestConstants.MultilineLicenseString +
-                originalFile;
+
+@"//
+// Copyright Seth Hendrick 2020.
+// Distributed under the MIT License.
+// (See accompanying file LICENSE in the root of the repository).
+//
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
+{
+    class Class1
+    {
+    }
+}
+";
 
             CakeLicenseHeaderUpdaterSettings settings = new CakeLicenseHeaderUpdaterSettings
             {
-                LicenseString = TestConstants.MultilineLicenseString
+                LicenseString = licenseString
             };
 
             // Nothing should happen, even if specified.  There are no old licenses hanging around.
-            settings.OldHeaderRegexPatterns.Add( TestConstants.RegexEscapedMultilineLicenseString );
+            settings.OldHeaderRegexPatterns.Add( Regex.Escape( licenseString ) );
 
             ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
             result.WasSuccess( true, false );

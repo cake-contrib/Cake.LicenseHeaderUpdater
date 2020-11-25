@@ -18,10 +18,6 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
 
         public static readonly FilePath FileToModify;
 
-        public static readonly string MultilineLicenseString;
-
-        public static readonly string RegexEscapedMultilineLicenseString;
-
         // ---------------- Constructor ----------------
 
         static TestConstants()
@@ -29,17 +25,6 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
             TestDirectory = new DirectoryPath( TestContext.CurrentContext.TestDirectory );
             TestDirectory = TestDirectory.Combine( new DirectoryPath( "TestOutput" ) );
             FileToModify = TestDirectory.CombineWithFilePath( new FilePath( "uut.cs" ) );
-
-            MultilineLicenseString =
-@"//
-// Copyright Seth Hendrick 2020.
-// Distributed under the MIT License.
-// (See accompanying file LICENSE in the root of the repository).
-//
-
-";
-
-            RegexEscapedMultilineLicenseString = Regex.Escape( MultilineLicenseString );
         }
     }
 }

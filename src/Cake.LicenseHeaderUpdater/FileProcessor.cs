@@ -4,7 +4,6 @@
 // (See accompanying file LICENSE in the root of the repository).
 //
 
-using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -31,11 +30,15 @@ namespace Cake.LicenseHeaderUpdater
             this.settings = settings;
 
             StringBuilder builder = new StringBuilder();
-            foreach( string pattern in settings.OldHeaderRegexPatterns)
+            foreach( string pattern in settings.OldHeaderRegexPatterns )
             {
                 builder.Append( $"({pattern})|" );
             }
-            builder.Remove( builder.Length - 1, 1 );
+
+            if( settings.OldHeaderRegexPatterns.Count > 0 )
+            {
+                builder.Remove( builder.Length - 1, 1 );
+            }
 
             this.oldRegexes = new Regex(
                 builder.ToString(),

@@ -65,5 +65,30 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
             ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
             result.WasSuccess( true, false );
         }
+
+        [Test]
+        public void MissingHeaderWithNoNewLicenseSpecifiedTest()
+        {
+            const string originalFile =
+@"using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
+{
+    class Class1
+    {
+    }
+}
+";
+            CakeLicenseHeaderUpdaterSettings settings = new CakeLicenseHeaderUpdaterSettings
+            {
+                // Expect no changes if this isn't specified.
+                LicenseString = null
+            };
+
+            ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, originalFile, settings );
+            result.WasSuccess( false, false );
+        }
     }
 }

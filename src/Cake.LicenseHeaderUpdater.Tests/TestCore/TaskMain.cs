@@ -32,9 +32,15 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
                 $@"--files=""{globString}""",
                 // Need the "my_" in front because otherwise Cake things its the dry run for *it*
                 // not for us.
-                $@"--my_{nameof( CakeLicenseHeaderUpdaterSettings.DryRun )}=""{settings.DryRun}""",
-                $@"--{nameof( CakeLicenseHeaderUpdaterSettings.LicenseString )}=""{settings.LicenseString}"""
+                $@"--my_{nameof( CakeLicenseHeaderUpdaterSettings.DryRun )}=""{settings.DryRun}"""
             };
+
+            if( string.IsNullOrEmpty( settings.LicenseString ) == false )
+            {
+                arguments.Add(
+                    $@"--{nameof( CakeLicenseHeaderUpdaterSettings.LicenseString )}=""{settings.LicenseString}"""
+                );
+            }
 
             if( settings.OldHeaderRegexPatterns.Count > TaskRunner.MaximumRegexes )
             {
@@ -52,6 +58,7 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
             StringBuilder builder = new StringBuilder();
             arguments.ForEach( a => builder.Append( a + ", " ) );
             Console.WriteLine( "Sending arguments: " + builder );
+            Console.WriteLine();
 
             int exitCode;
             string stdOut;

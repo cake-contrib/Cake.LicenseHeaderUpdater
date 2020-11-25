@@ -17,11 +17,11 @@ How it Works
 
 First, add the addin to your build.cake file by including ```#addin Cake.LicenseHeaderUpdater```.
 
-Second, you need to collect the list of files you want to change the license of.  There are numerious ways to do this.  You can hard-code them, you can use the [GetFiles()](https://cakebuild.net/api/Cake.Common.IO/GlobbingAliases/7DD7F309) Alias to return a [FilePathCollection](https://www.cakebuild.net/api/Cake.Core.IO/FilePathCollection/), or can even parse the solution file (see Scenario 4 below).
+Second, you need to collect the list of files you want to change the license header of.  There are numerious ways to do this.  You can hard-code them, you can use the [GetFiles()](https://cakebuild.net/api/Cake.Common.IO/GlobbingAliases/7DD7F309) Alias to return a [FilePathCollection](https://www.cakebuild.net/api/Cake.Core.IO/FilePathCollection/), or can even parse the solution file (see Scenario 4 below).
 
-Third, you need to Configure a CakeLicenseHeaderUpdaterSettings object.  Read the object's comments on the property to see how to configure it properly.
+Third, you need to Configure a CakeLicenseHeaderUpdaterSettings object.  Read the object's comments on the property to see how to configure it properly.  The hardest part is figuring out the list of regexes used to replace old licenses with the new one.  It is strongly recommended that you are on a clean git or SVN checkout before running this tool so its easy to revert in case your regex is wrong.
 
-These are the various scenarios that this addin supports:
+These are the various scenarios that this addin supports, as shown below.  There are also more examples in the Integration Tests.
 
 Scenario 1: Adding a License Header to New Files
 ---

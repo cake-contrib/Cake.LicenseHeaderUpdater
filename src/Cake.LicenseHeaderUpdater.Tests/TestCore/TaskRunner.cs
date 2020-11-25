@@ -52,5 +52,11 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
 
             context.UpdateLicenseHeaders( context.GetFiles( globPattern ), settings );
         }
+
+        public override void OnError( Exception exception, ICakeContext context )
+        {
+            Console.Error.WriteLine( exception.ToString() );
+            throw exception;
+        }
     }
 }

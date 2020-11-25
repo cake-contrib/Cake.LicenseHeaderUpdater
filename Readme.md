@@ -144,6 +144,22 @@ is something I used to work with the new .csproj format.  Its obviously not perf
 In this example, everything is the same as the previous scenarios, minus how one gets the files.
 
 ```C#
+        settings.FileFilter = delegate( FilePath path )
+        {
+            // Ignore files in obj and bin folders.
+            if( Regex.IsMatch( path.ToString(), @"[/\\]obj[/\\]" ) )
+            {
+                return false;
+            }
+            if( Regex.IsMatch( path.ToString(), @"[/\\]bin[/\\]" ) )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        };
 
         List<FilePath> files = new List<FilePath>();
 

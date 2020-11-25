@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
 {
     [TestFixture]
-    public class MissingHeaderTests
+    public class HeaderRemovalTests
     {
         // ---------------- Fields ----------------
 
@@ -33,10 +33,32 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
 
         // ---------------- Tests ----------------
 
+        /// <summary>
+        /// Not sure why one would *want* to remove a header,
+        /// but we'll support it.
+        /// </summary>
         [Test]
-        public void MissingHeaderWithNewLicenseSpecifiedTest()
+        public void RemoveHeaderTest()
         {
             const string originalFile =
+@"//
+// Copyright Seth Hendrick 2020.
+// Distributed under the MIT License.
+// (See accompanying file LICENSE in the root of the repository).
+//
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
+{
+    class Class1
+    {
+    }
+}
+";
+            const string expectedFile =
 @"using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,46 +70,26 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
     }
 }
 ";
+            const string regex =
+@"//
+// Copyright Seth Hendrick 2020\.
+// Distributed under the MIT License\.
+// \(See accompanying file LICENSE in the root of the repository\)\.
+//
 
-            string expectedFile =
-                TestConstants.MultilineLicenseString +
-                originalFile;
-
-            CakeLicenseHeaderUpdaterSettings settings = new CakeLicenseHeaderUpdaterSettings
-            {
-                LicenseString = TestConstants.MultilineLicenseString
-            };
-
-            // Nothing should happen, even if specified.  There are no old licenses hanging around.
-            settings.OldHeaderRegexPatterns.Add( TestConstants.RegexEscapedMultilineLicenseString );
-
-            ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
-            result.WasSuccess( true, false );
-        }
-
-        [Test]
-        public void MissingHeaderWithNoNewLicenseSpecifiedTest()
-        {
-            const string originalFile =
-@"using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
-{
-    class Class1
-    {
-    }
-}
 ";
+
             CakeLicenseHeaderUpdaterSettings settings = new CakeLicenseHeaderUpdaterSettings
             {
-                // Expect no changes if this isn't specified.
                 LicenseString = null
             };
 
-            ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, originalFile, settings );
-            result.WasSuccess( false, false );
+            settings.OldHeaderRegexPatterns.Add( regex );
+
+
+            ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
+            // No to adding a header, yes to replacing a header with nothing.
+            result.WasSuccess( false, true );
         }
     }
 }

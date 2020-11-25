@@ -57,7 +57,6 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
             // This should erase everything if dry run doesn't work.
             settings.OldHeaderRegexPatterns.Add( ".*" );
 
-
             // Should be a successful run with the intent of the output to 
             // change everything, but nothing should actually change.
             ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( expectedFile, expectedFile, settings );

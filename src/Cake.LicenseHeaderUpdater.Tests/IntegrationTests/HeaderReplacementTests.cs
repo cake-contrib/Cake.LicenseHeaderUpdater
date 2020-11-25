@@ -4,9 +4,6 @@
 // (See accompanying file LICENSE in the root of the repository).
 //
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Cake.LicenseHeaderUpdater.Tests.TestCore;
 using NUnit.Framework;
 
@@ -98,12 +95,8 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
                 LicenseString = newLicense
             };
 
-            // This should erase everything if dry run doesn't work.
             settings.OldHeaderRegexPatterns.Add( oldLicenseRegex );
 
-
-            // Should be a successful run with the intent of the output to 
-            // change everything, but nothing should actually change.
             ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
             result.WasSuccess( true, true );
         }
@@ -173,12 +166,8 @@ namespace Cake.LicenseHeaderUpdater.Tests.IntegrationTests
                 LicenseString = newLicense
             };
 
-            // This should erase everything if dry run doesn't work.
             settings.OldHeaderRegexPatterns.Add( oldLicenseRegex );
 
-
-            // Should be a successful run with the intent of the output to 
-            // change everything, but nothing should actually change.
             ModifyHeaderResult result = this.testFrame.DoModifyHeaderTest( originalFile, expectedFile, settings );
             result.WasSuccess( true, true );
         }

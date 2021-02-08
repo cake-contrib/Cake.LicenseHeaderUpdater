@@ -71,17 +71,10 @@ namespace Cake.LicenseHeaderUpdater.Tests.TestCore
                     // We'll put it back in the finally block.
 
                     Console.SetOut( writer );
-                    var host = new CakeHostBuilder()
-                        .WithArguments( arguments.ToArray() )
-                        .ConfigureServices(
-                            delegate ( ICakeServices services )
-                            {
-                                services.UseAssembly( typeof( TaskMain ).Assembly );
-                            }
-                        )
-                        .Build();
 
-                    exitCode = host.Run();
+                    var host = new CakeHost();
+                    host.AddAssembly( typeof( TaskMain ).Assembly );
+                    exitCode = host.Run( arguments.ToArray() );
                     stdOut = writer.ToString();
                 }
                 finally

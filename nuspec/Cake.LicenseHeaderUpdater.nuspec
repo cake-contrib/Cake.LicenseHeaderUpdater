@@ -16,11 +16,11 @@
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/xforever1313/Cake.LicenseHeaderUpdater</projectUrl>
     <icon>icon.png</icon>
-    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/addin/cake-contrib-addin-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <repository type="git" url="https://github.com/xforever1313/Cake.LicenseHeaderUpdater.git"/>
     <copyright>Copyright (c) Seth Hendrick</copyright>
-    <tags>xforever1313 cake build addin dotnet C# license header updater</tags>
+    <tags>xforever1313 cake build addin dotnet C# license header updater cake-addin</tags>
   </metadata>
   <files>
   </files>
